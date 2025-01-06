@@ -186,6 +186,19 @@ asyncio.run(connect())
 - Extend WebSocket notifications to support filtering by match ID.
 
 ---
+## Photos of implementation
+
+## Websockets Notification
+![image](https://github.com/user-attachments/assets/50065db2-49dc-415b-bbb6-cccf30c7db58)
+
+## Data Scraped of matches
+![image](https://github.com/user-attachments/assets/7246fab0-b06d-44ce-8de6-5056bc7e3dfc)
+
+## MongoDB Database
+![image](https://github.com/user-attachments/assets/9b837f29-12b7-41b0-a1ac-495ed22a440b)
+
+
+
 
 ## **License**
 This project is licensed under the MIT License.
