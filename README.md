@@ -150,7 +150,7 @@ asyncio.run(connect())
 ---
 ### Sample Scraped Data
 - The data below represents a sample of match information scraped from the website:
-
+```json
 {
   "match_id": "123456",
   "team_1": "India",
@@ -167,7 +167,7 @@ asyncio.run(connect())
     "location": "Melbourne, Australia"
   }
 }
-
+```
 - This data is saved in MongoDB under the matches collection and can be accessed for real-time updates during the match.
 ## **Questions to Address**
 
