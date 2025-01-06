@@ -1,5 +1,3 @@
-# Cricket_Match_Scraper
- 
 # Cricket Match Real-Time Monitoring System
 
 This project implements a real-time cricket match monitoring system using web scraping, MongoDB, WebSocket notifications, and scheduling. The system is designed to scrape match schedules, detailed information, and provide real-time updates when matches are live. 
