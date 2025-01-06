@@ -41,7 +41,7 @@ project/
 ### **1. Prerequisites**
 - Python 3.8+
 - MongoDB installed and running on `localhost:27017`
-```
+
 
 ### **2. Start MongoDB**
 Ensure MongoDB is running:
