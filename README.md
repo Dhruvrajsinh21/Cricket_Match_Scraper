@@ -74,19 +74,7 @@ Ensure all dependencies are installed:
 pip install -r requirements.txt
 ```
 
-### **3. Start the WebSocket Server**
-Run the WebSocket server to handle real-time notifications:
-```bash
-python websocket/server.py
-```
-
-### **4. Start the Scheduler**
-Run the scheduler to monitor match schedules and trigger real-time updates:
-```bash
-python scheduler/monitor.py
-```
-
-### **5. Start the Main Program**
+### **3. Start the Main Program**
 Run the main entry point to integrate all components:
 ```bash
 python main.py
