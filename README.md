@@ -6,7 +6,7 @@ This project implements a real-time cricket match monitoring system using web sc
 
 ## **Project Features**
 
-- **Scraping**: Periodic scraping of match schedules and detailed match data.
+- **Scraping**: Periodic scraping of match schedules and detailed match data using Playwright.
 - **Database**: MongoDB is used for storing match schedules and real-time updates.
 - **WebSocket Notifications**: Sends real-time updates to connected clients when a match goes live.
 - **Scheduling**: Automated tasks using APScheduler to monitor matches and trigger real-time updates.
@@ -35,6 +35,22 @@ project/
 ```
 
 ---
+
+## Modules Overview
+# Database
+db_connection.py: Sets up MongoDB connection.
+queries.py: Handles saving and querying match data.
+# Scrapers
+match_list_scraper.py: Scrapes match schedules using Playwright.
+match_detail_scraper.py: Scrapes detailed match info (e.g., match info, squads).
+# Scheduler
+monitor.py: Schedules periodic scraping tasks using APScheduler.
+trigger_jobs.py: Monitors matches and triggers real-time updates.
+# WebSocket
+server.py: Implements WebSocket server for real-time notifications.
+notify.py: Handles sending notifications to connected WebSocket clients.
+# Main Entry Point
+main.py: Starts the WebSocket server, scheduler, and real-time monitoring threads.
 
 ## **Setup and Installation**
 
