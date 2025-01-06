@@ -10,10 +10,9 @@ async def websocket_handler(websocket):
     print(f"New client connected. Total clients: {len(connected_clients)}")
 
     try:
-        # Process incoming messages
         async for message in websocket:
             print(f"Received message: {message}")
-            await notify_clients(message)  # Broadcast the message to all connected clients
+            await notify_clients(message)
     except websockets.ConnectionClosed as e:
         print(f"Client disconnected unexpectedly: {e}")
     finally:
@@ -27,16 +26,13 @@ async def notify_clients(data):
         tasks = []
         for client in connected_clients:
             try:
-                # Attempt to send data to the client, no need for open check
                 tasks.append(client.send(data))
             except (websockets.exceptions.ConnectionClosed, Exception) as e:
-                # Catch any connection closed error or other exceptions
                 print(f"Error sending data to client: {e}")
-                connected_clients.discard(client)  # Remove client if there's an error
-        
-        # Only attempt to gather tasks if there are any
+                connected_clients.discard(client)
+    
         if tasks:
-            await asyncio.gather(*tasks)  # Send data to all open clients
+            await asyncio.gather(*tasks)
 
 # Start WebSocket server
 async def start_websocket_server():
