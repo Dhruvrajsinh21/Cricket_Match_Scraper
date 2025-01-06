@@ -11,10 +11,9 @@ def update_match_list():
 def run_scheduler():
     scheduler = BackgroundScheduler()
     try:
-        scheduler.add_job(update_match_list, "interval", minutes=1)
+        scheduler.add_job(update_match_list, "interval", seconds=30)
         print("Scheduler started. Press Ctrl+C to exit.")
         scheduler.start()
-        # Keep the main thread alive to ensure the scheduler runs.
         while True:
             pass
     except (KeyboardInterrupt, SystemExit):
