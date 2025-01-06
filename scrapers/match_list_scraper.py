@@ -1,34 +1,40 @@
-import requests
-from bs4 import BeautifulSoup
+from playwright.sync_api import sync_playwright
 
 BASE_URL = "https://crex.live/fixtures/match-list"
 
 def scrape_match_list():
-    response = requests.get(BASE_URL)
-    if response.status_code == 200:
-        print("Successfully fetched the page!")
-    else:
-        print(f"Failed to fetch the page, status code: {response.status_code}")
-        return []
+    #Scrape the match list from the specified BASE_URL and return match details.
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
 
-    # Check the raw HTML content
-    print(response.text[:1000])  # Print only the first 1000 characters for inspection
+        print("Fetching match list...")
+        page.goto(BASE_URL, timeout=60000)
+        page.wait_for_load_state("domcontentloaded")
 
-    soup = BeautifulSoup(response.content, "html.parser")
-
-    matches = []
-    for match in soup.select(".match-list-item"):
+        matches = []
         try:
-            match_id = match["data-id"]
-            url = match.select_one(".match-link")["href"]
-            start_time = match.select_one(".match-time")["data-start-time"]
-            matches.append({
-                "match_id": match_id,
-                "url": url,
-                "start_time": start_time,
-            })
-        except Exception as e:
-            print(f"Error parsing a match: {e}")
+            match_elements = page.query_selector_all('.match-card-wrapper')
+            for match in match_elements:
+                try:
+                    match_id = match.get_attribute("data-id")
+                    url = match.get_attribute("href")
+                    start_time_element = match.query_selector(".match-time")
+                    start_time = start_time_element.get_attribute("data-start-time") if start_time_element else "N/A"
 
-    print(matches)
-    return matches
+                    matches.append({
+                        "match_id": match_id,
+                        "url": url,
+                        "start_time": start_time,
+                    })
+                except Exception as e:
+                    print(f"Error parsing a match: {e}")
+
+        except Exception as e:
+            print(f"Error fetching match details: {e}")
+        finally:
+            browser.close()
+
+        print(f"Successfully fetched {len(matches)} matches.")
+        print(matches)
+        return matches
