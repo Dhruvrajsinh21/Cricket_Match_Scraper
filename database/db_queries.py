@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 def save_match_list(db, matches):
-    """Saves a list of matches to the database with logging."""
+    #Saves a list of matches to the database with logging.
     if not matches:
         print("No matches to save!")
         return
@@ -18,9 +18,8 @@ def save_match_list(db, matches):
             print(f"Updated match with ID: {match['match_id']}")
 
 def get_upcoming_matches(db):
-    """Fetches upcoming matches and logs the result."""
-    # Ensure we compare using UTC time (timezone-aware)
-    current_time_utc = datetime.now(timezone.utc)  # Get current UTC time as a timezone-aware object
+    #Fetches upcoming matches and logs the result.
+    current_time_utc = datetime.now(timezone.utc)
 
     # Fetch matches where start_time is greater than or equal to the current UTC time
     matches = list(db.matches.find({"start_time": {"$gte": current_time_utc}}))
@@ -30,9 +29,9 @@ def get_upcoming_matches(db):
     else:
         print("No upcoming matches found!")
     return matches
-"""
+
 def update_real_time_data(db, match_id, data):
-    Updates real-time data for a specific match with logging
+    #Updates real-time data for a specific match with logging
     result = db.matches.update_one(
         {"match_id": match_id},
         {"$set": {"real_time_data": data}}
@@ -41,4 +40,3 @@ def update_real_time_data(db, match_id, data):
         print(f"Updated real-time data for match ID: {match_id}")
     else:
         print(f"No match found with ID: {match_id} to update!")
-"""
