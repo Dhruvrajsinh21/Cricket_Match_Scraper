@@ -36,20 +36,20 @@ project/
 
 ---
 
-## Modules Overview
-# Database
+# Modules Overview
+### Database
 db_connection.py: Sets up MongoDB connection.
 queries.py: Handles saving and querying match data.
-# Scrapers
+### Scrapers
 match_list_scraper.py: Scrapes match schedules using Playwright.
 match_detail_scraper.py: Scrapes detailed match info (e.g., match info, squads).
-# Scheduler
+### Scheduler
 monitor.py: Schedules periodic scraping tasks using APScheduler.
 trigger_jobs.py: Monitors matches and triggers real-time updates.
-# WebSocket
+### WebSocket
 server.py: Implements WebSocket server for real-time notifications.
 notify.py: Handles sending notifications to connected WebSocket clients.
-# Main Entry Point
+### Main Entry Point
 main.py: Starts the WebSocket server, scheduler, and real-time monitoring threads.
 
 ## **Setup and Installation**
