@@ -148,7 +148,8 @@ asyncio.run(connect())
 - **`main.py`**: Starts the WebSocket server, scheduler, and real-time monitoring threads.
 
 ---
-### Sample Scrap Data
+### Sample Scraped Data
+- The data below represents a sample of match information scraped from the website:
 
 {
   "match_id": "123456",
