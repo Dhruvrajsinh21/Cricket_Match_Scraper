@@ -41,15 +41,9 @@ project/
 ### **1. Prerequisites**
 - Python 3.8+
 - MongoDB installed and running on `localhost:27017`
-
-### **2. Install Required Dependencies**
-
-Run the following command to install dependencies:
-```bash
-pip install -r requirements.txt
 ```
 
-### **3. Start MongoDB**
+### **2. Start MongoDB**
 Ensure MongoDB is running:
 ```bash
 mongod
